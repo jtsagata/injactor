@@ -1,0 +1,7 @@
+# project specific settings
+.idea
+*.log
+# CMake
+cmake-build-*/
+build/
+ext/
