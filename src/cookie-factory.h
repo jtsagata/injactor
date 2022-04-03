@@ -4,12 +4,19 @@
 #include <string>
 #include <vector>
 
+typedef std::vector<std::string> vectorOfStrings;
+
 // Configure options
-static struct programOptions {
+struct programOptions {
     bool verbose = false;
-    std::vector<std::string> subs;
-    std::vector<std::string> paths;
-} settings;
+    bool noActions = false;
+    vectorOfStrings jsonFile;
+    vectorOfStrings templatePaths;
+    std::string outputDirectory;
+    std::string baseDirectory;
+};
+
+extern programOptions settings;
 
 // Function prototypes
 void process();

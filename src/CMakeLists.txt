@@ -5,5 +5,9 @@ target_sources(${PROJECT_NAME} PRIVATE tty_colors.h)
 
 target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(${PROJECT_NAME} cxxopts)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+
+# Libraries
 target_link_libraries(${PROJECT_NAME} fmt::fmt)
+

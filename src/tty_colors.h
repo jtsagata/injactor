@@ -24,10 +24,16 @@
 #include <fmt/core.h>
 
 #include <filesystem>
+#include <map>
 #include <set>
 #include <string>
 #include <unistd.h>
 
+// directly print paths
+namespace fmt {
+    template <>
+    struct formatter<std::filesystem::path> : formatter<std::string> {};
+}
 
 inline bool isColorTerm() {
     using stringSet = std::set<std::string>;

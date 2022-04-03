@@ -1,5 +1,11 @@
-cmake_minimum_required(VERSION 3.21)
-project(cookie-factory)
+cmake_minimum_required(VERSION 3.18)
+
+project(cookie-factory
+        VERSION "0.0.1"
+        LANGUAGES CXX
+        HOMEPAGE_URL https://github.com/jtsagata/cookie-factory
+        DESCRIPTION "Generate a list of files from a set of templates. Using a JSON file to specify parameters")
+
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -9,21 +15,16 @@ set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 # External libraries
 #
 include(support/cmake/CPM.cmake)
-CPMAddPackage(
-        NAME inja
-        VERSION 3.3.0
-        GITHUB_REPOSITORY pantor/inja
-        SOURCE_DIR "${CMAKE_SOURCE_DIR}/ext/inja"
-        DOWNLOAD_ONLY True
-)
 
 CPMAddPackage(
         NAME cxxopts
-        GITHUB_REPOSITORY jarro2783/cxxopts
-        SOURCE_DIR "${CMAKE_SOURCE_DIR}/ext/cxxopts"
-        VERSION 3.0.0
+        GITHUB_REPOSITORY CLIUtils/CLI11
+        SOURCE_DIR "${CMAKE_SOURCE_DIR}/ext/CL11"
+        VERSION 2.2.0
         DOWNLOAD_ONLY True
 )
+
+
 
 CPMAddPackage(
         NAME fmt
@@ -34,9 +35,5 @@ CPMAddPackage(
         "FMT_TEST Off"
         "FMT_DOC Off"
 )
-
-
-add_library(cxxopts INTERFACE IMPORTED)
-target_include_directories(cxxopts INTERFACE "${cxxopts_SOURCE_DIR}/include")
 
 add_subdirectory(src)
