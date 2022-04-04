@@ -40,13 +40,18 @@ int main(int argc, char *argv[]) {
 
     app.add_flag("-p,--print", "Print configuration and exit")->group("");
 
+    // Show help if no options
+    if(argc==1) {
+        fmt::print("{}", app.help("", CLI::AppFormatMode::All));
+        return EXIT_SUCCESS;
+    }
+
     try {
         app.parse(argc, argv);                                                                                   \
-
     } catch (const CLI::ParseError &e) {
         fmt::print("\nERROR:\n");
         app.exit(e);
-        exit(e.get_exit_code());
+        return e.get_exit_code();
     }
 
     if (app.get_option("--print")->as<bool>()) {  // NEW: print configuration and exit
