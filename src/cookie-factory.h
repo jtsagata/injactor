@@ -3,22 +3,19 @@
 
 #include <string>
 #include <vector>
+#include <filesystem>
 
 typedef std::vector<std::string> vectorOfStrings;
 
 // Configure options
 struct programOptions {
-    bool verbose = false;
-    bool noActions = false;
-    vectorOfStrings jsonFile;
-    vectorOfStrings templatePaths;
-    std::string outputDirectory;
-    std::string baseDirectory;
+    std::string jsonFile;
+    std::string templatePath;
 };
 
-extern programOptions settings;
 
 // Function prototypes
-void process();
+void process(const programOptions &options);
+
 
 #endif //COOKIE_FACTORY_COOKIE_FACTORY_H
